@@ -8,15 +8,18 @@ import { useEffect } from "react";
 import { Home, NotFound } from "./pages";
 
 import { Scroll } from "./animation";
+import { Header, Footer } from "./components/layout";
 
 // this is just for dome pages you want to repeat same component
 const Root = () => {
   return (
-    <div>
-      {/* here we might add navbar */}
+    <div className="min-h-dvh bg-white text-dark">
+      <Header />
       <ScrollRestoration />
-      <Outlet />
-      {/* here maybe footer, it will show in all the pages */}
+      <div className="bg-white">
+        <Outlet />
+      </div>
+      <Footer />
     </div>
   );
 };
@@ -45,10 +48,5 @@ export default function App() {
   useEffect(() => {
     Scroll();
   }, []);
-  return (
-    <>
-      <Outlet />
-      <RouterProvider router={router} />
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
